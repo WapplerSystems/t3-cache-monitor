@@ -1,0 +1,27 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  WapplerSystems\CacheMonitor\:
+    resource: '../Classes/*'
+
+  WapplerSystems\CacheMonitor\Command\CacheStatsCommand:
+    tags:
+      - name: console.command
+        command: 'cache:stats'
+
+  WapplerSystems\CacheMonitor\Widgets\CacheOverviewWidget:
+    arguments:
+      $options:
+        refreshAvailable: true
+    tags:
+      - name: dashboard.widget
+        identifier: 'cacheOverview'
+        groupNames: 'systemInfo'
+        title: 'LLL:EXT:cache_monitor/Resources/Private/Language/locallang_mod.xlf:widget.cacheOverview.title'
+        description: 'LLL:EXT:cache_monitor/Resources/Private/Language/locallang_mod.xlf:widget.cacheOverview.description'
+        iconIdentifier: 'content-widget-list'
+        height: 'large'
+        width: 'medium'

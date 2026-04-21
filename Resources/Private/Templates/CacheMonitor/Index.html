@@ -1,0 +1,106 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Module" />
+
+<f:section name="Content">
+
+    <f:if condition="{flushedCache}">
+        <div class="alert alert-success">
+            Cache <strong>{flushedCache}</strong> was flushed successfully.
+        </div>
+    </f:if>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="card-title">{totalCaches}</h3>
+                    <p class="text-muted">Registered Caches</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="card-title">{totalEntries}</h3>
+                    <p class="text-muted">Total Entries</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="card-title">{totalSize}</h3>
+                    <p class="text-muted">Total Size</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-fit">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Cache Identifier</th>
+                    <th>Backend</th>
+                    <th>Groups</th>
+                    <th class="text-end">Entries</th>
+                    <th class="text-end">Size</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <f:for each="{statistics}" as="stat">
+                    <tr>
+                        <td>
+                            <strong>{stat.identifier}</strong>
+                        </td>
+                        <td>
+                            <span class="badge bg-info">{stat.backend}</span>
+                        </td>
+                        <td>
+                            <f:for each="{stat.groups}" as="group">
+                                <span class="badge bg-secondary">{group}</span>
+                            </f:for>
+                        </td>
+                        <td class="text-end">
+                            <f:if condition="{stat.entries} != NULL">
+                                <f:then><span class="badge bg-primary">{stat.entries}</span></f:then>
+                                <f:else><span class="text-muted">n/a</span></f:else>
+                            </f:if>
+                        </td>
+                        <td class="text-end">
+                            <f:if condition="{stat.size} != NULL">
+                                <f:then><f:format.bytes>{stat.size}</f:format.bytes></f:then>
+                                <f:else><span class="text-muted">n/a</span></f:else>
+                            </f:if>
+                        </td>
+                        <td class="text-end">
+                            <a href="{stat.flushUrl}"
+                               class="btn btn-sm btn-warning"
+                               title="Flush {stat.identifier}"
+                               onclick="return confirm('Flush cache {stat.identifier}?');">
+                                Flush
+                            </a>
+                        </td>
+                    </tr>
+                </f:for>
+            </tbody>
+            <tfoot>
+                <tr class="fw-bold">
+                    <td>{totalCaches} Caches</td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-end">{totalEntries}</td>
+                    <td class="text-end">{totalSize}</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</f:section>
+
+</html>

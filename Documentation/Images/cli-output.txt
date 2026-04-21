@@ -1,0 +1,35 @@
+
+TYPO3 Cache Statistics
+======================
+
++-------------------------+------------------------+---------+-----------+-------------+
+| Cache                   | Backend                | Entries | Size      | Groups      |
++-------------------------+------------------------+---------+-----------+-------------+
+| adminpanel_requestcache | Typo3DatabaseBackend   | 0       | 0 B       | all         |
+| assets                  | SimpleFileBackend      | 3       | 479.54 KB | system      |
+| autoloader              | SimpleFileBackend      | 0       | 0 B       | system      |
+| core                    | SimpleFileBackend      | 12      | 911.54 KB | system      |
+| dashboard_rss           | FileBackend            | 1       | 2.11 KB   | all         |
+| database_schema         | SimpleFileBackend      | 8       | 52.18 KB  | system      |
+| extbase                 | SimpleFileBackend      | 4       | 274.06 KB | system      |
+| extbase_object          | Typo3DatabaseBackend   | 0       | 0 B       | system      |
+| fluid_template          | SimpleFileBackend      | 114     | 1.4 MB    | system      |
+| flux                    | SimpleFileBackend      | 6       | 16.79 KB  | system      |
+| hash                    | Typo3DatabaseBackend   | 0       | 0 B       | pages       |
+| imagesizes              | Typo3DatabaseBackend   | 0       | 0 B       | lowlevel    |
+| l10n                    | SimpleFileBackend      | 132     | 979.34 KB | system      |
+| news                    | FileBackend            | 0       | 0 B       | all, system |
+| news_category           | Typo3DatabaseBackend   | 0       | 0 B       | all         |
+| pages                   | Typo3DatabaseBackend   | 5       | 76.36 KB  | pages       |
+| proxy_responses         | FileBackend            | 4       | 16.29 KB  | all         |
+| ratelimiter             | SimpleFileBackend      | 0       | 0 B       | system      |
+| rootline                | Typo3DatabaseBackend   | 85      | 61.07 KB  | pages       |
+| runtime                 | TransientMemoryBackend | n/a     | n/a       |             |
+| typoscript              | SimpleFileBackend      | 85      | 8.57 MB   | pages       |
+| vhs_main                | Typo3DatabaseBackend   | 0       | 0 B       | pages, all  |
+| vhs_markdown            | Typo3DatabaseBackend   | 0       | 0 B       | pages, all  |
+| ws_scss                 | FileBackend            | 6       | 710 B     | all         |
+| wst3bootstrap_menu      | Typo3DatabaseBackend   | 0       | 0 B       | pages, all  |
+|                         |                        |         |           |             |
+| Total (25 caches)       |                        | 465     | 12.78 MB  |             |
++-------------------------+------------------------+---------+-----------+-------------+

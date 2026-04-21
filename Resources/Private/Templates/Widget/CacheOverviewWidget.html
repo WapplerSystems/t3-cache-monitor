@@ -1,0 +1,46 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="widget-content-main">
+    <div class="widget-table-wrapper">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Cache</th>
+                    <th>Backend</th>
+                    <th class="text-end">Entries</th>
+                    <th class="text-end">Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <f:for each="{statistics}" as="stat">
+                    <tr>
+                        <td><small>{stat.identifier}</small></td>
+                        <td><span class="badge bg-secondary">{stat.backend}</span></td>
+                        <td class="text-end">
+                            <f:if condition="{stat.entries} != NULL">
+                                <f:then>{stat.entries}</f:then>
+                                <f:else><span class="text-muted">n/a</span></f:else>
+                            </f:if>
+                        </td>
+                        <td class="text-end">
+                            <f:if condition="{stat.size} != NULL">
+                                <f:then><f:format.bytes>{stat.size}</f:format.bytes></f:then>
+                                <f:else><span class="text-muted">n/a</span></f:else>
+                            </f:if>
+                        </td>
+                    </tr>
+                </f:for>
+            </tbody>
+            <tfoot>
+                <tr class="fw-bold">
+                    <td>{totalCaches} Caches</td>
+                    <td></td>
+                    <td class="text-end">{totalEntries}</td>
+                    <td class="text-end">{totalSize}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+</html>
