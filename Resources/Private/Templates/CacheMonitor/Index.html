@@ -62,12 +62,12 @@
                         </td>
                         <td>
                             <f:for each="{stat.groups}" as="group">
-                                <span class="badge bg-secondary">{group}</span>
+                                <span class="badge bg-secondary" style="color: #fff">{group}</span>
                             </f:for>
                         </td>
                         <td class="text-end">
                             <f:if condition="{stat.entries} != NULL">
-                                <f:then><span class="badge bg-primary">{stat.entries}</span></f:then>
+                                <f:then><span class="badge bg-primary" style="color: #fff">{stat.entries}</span></f:then>
                                 <f:else><span class="text-muted">n/a</span></f:else>
                             </f:if>
                         </td>
