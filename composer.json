@@ -4,9 +4,9 @@
     "description": "Cache monitoring dashboard, backend module and CLI command for TYPO3",
     "license": "GPL-2.0-or-later",
     "require": {
-        "typo3/cms-core": "^12",
-        "typo3/cms-backend": "^12",
-        "typo3/cms-fluid": "^12"
+        "typo3/cms-core": "^13",
+        "typo3/cms-backend": "^13",
+        "typo3/cms-fluid": "^13"
     },
     "suggest": {
         "typo3/cms-dashboard": "For dashboard widget support"

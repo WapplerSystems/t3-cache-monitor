@@ -16,6 +16,7 @@ services:
     arguments:
       $options:
         refreshAvailable: true
+      $backendViewFactory: '@TYPO3\CMS\Backend\View\BackendViewFactory'
     tags:
       - name: dashboard.widget
         identifier: 'cacheOverview'

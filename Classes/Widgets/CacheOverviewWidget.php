@@ -4,11 +4,10 @@ declare(strict_types=1);
 namespace WapplerSystems\CacheMonitor\Widgets;
 
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Backend\View\BackendViewFactory;
 use TYPO3\CMS\Dashboard\Widgets\RequestAwareWidgetInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 use WapplerSystems\CacheMonitor\Service\CacheStatisticsService;
 
 class CacheOverviewWidget implements WidgetInterface, RequestAwareWidgetInterface
@@ -18,6 +17,7 @@ class CacheOverviewWidget implements WidgetInterface, RequestAwareWidgetInterfac
     public function __construct(
         private readonly WidgetConfigurationInterface $configuration,
         private readonly CacheStatisticsService $statisticsService,
+        private readonly BackendViewFactory $backendViewFactory,
         private readonly array $options = [],
     ) {
     }
@@ -38,10 +38,7 @@ class CacheOverviewWidget implements WidgetInterface, RequestAwareWidgetInterfac
             $totalSize += $stat['size'] ?? 0;
         }
 
-        $view = GeneralUtility::makeInstance(StandaloneView::class);
-        $view->setTemplatePathAndFilename(
-            GeneralUtility::getFileAbsFileName('EXT:cache_monitor/Resources/Private/Templates/Widget/CacheOverviewWidget.html')
-        );
+        $view = $this->backendViewFactory->create($this->request, ['wapplersystems/cache-monitor']);
         $view->assignMultiple([
             'statistics' => $statistics,
             'totalEntries' => $totalEntries,
@@ -50,7 +47,7 @@ class CacheOverviewWidget implements WidgetInterface, RequestAwareWidgetInterfac
             'configuration' => $this->configuration,
             'options' => $this->options,
         ]);
-        return $view->render();
+        return $view->render('Widget/CacheOverviewWidget');
     }
 
     public function getOptions(): array
