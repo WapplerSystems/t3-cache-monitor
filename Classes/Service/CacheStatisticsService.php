@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace WapplerSystems\CacheMonitor\Service;
 
 use TYPO3\CMS\Core\Cache\Backend\ApcuBackend;
-use TYPO3\CMS\Core\Cache\Backend\FileBackend;
 use TYPO3\CMS\Core\Cache\Backend\NullBackend;
 use TYPO3\CMS\Core\Cache\Backend\RedisBackend;
 use TYPO3\CMS\Core\Cache\Backend\SimpleFileBackend;
@@ -50,8 +49,6 @@ class CacheStatisticsService
                 } elseif ($backend instanceof Typo3DatabaseBackend) {
                     [$entries, $size] = $this->getDatabaseBackendStats($backend);
                 } elseif ($backend instanceof SimpleFileBackend) {
-                    [$entries, $size] = $this->getFileBackendStats($backend->getCacheDirectory());
-                } elseif ($backend instanceof FileBackend) {
                     [$entries, $size] = $this->getFileBackendStats($backend->getCacheDirectory());
                 } elseif ($backend instanceof RedisBackend) {
                     $entries = $this->getRedisBackendEntries($backend, $identifier);
