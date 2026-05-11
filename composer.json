@@ -9,7 +9,8 @@
         "typo3/cms-fluid": "^13"
     },
     "suggest": {
-        "typo3/cms-dashboard": "For dashboard widget support"
+        "typo3/cms-dashboard": "For dashboard widget support",
+        "wapplersystems/zabbix_client": "Exposes cache statistics via the GetTypo3CacheStats monitoring operation"
     },
     "autoload": {
         "psr-4": {
